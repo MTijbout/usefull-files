@@ -849,7 +849,7 @@ if [[ $MYMENU == *"nodered"* ]]; then
             cd
             mkdir .node-red
             cd .node-red
-            printstatus "Installing Nodes (could take some time)"
+            printstatus "Installing Nodes (could take some time (1))"
             npm $NQUIET install moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
 			node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-node-sqlite \
 			node-red-node-emoncms node-red-node-geofence node-red-contrib-ivona node-red-contrib-moment node-red-contrib-particle \
@@ -857,7 +857,11 @@ if [[ $MYMENU == *"nodered"* ]]; then
 			node-red-contrib-isonline node-red-node-ping node-red-node-random node-red-node-smooth node-red-contrib-npm node-red-node-arduino \
 			node-red-contrib-file-function node-red-contrib-boolean-logic node-red-contrib-blynk-websockets node-red-contrib-chatbot \
 			node-red-dashboard node-red-node-darksky node-red-node-serialport node-red-contrib-owntracks node-red-contrib-opi-gpio node-red-contrib-alexa-local 2>&1 | tee -a $LOGFILE
-            sudo npm $NQUIET install bcryptjs 2>&1 | tee -a $LOGFILE
+
+            printstatus "Installing Nodes (Part 2)"
+			sudo npm $NQUIET install bcryptjs 2>&1 | tee -a $LOGFILE
+
+            printstatus "Installing Nodes (Part 3)"
 
 			## this last bit of code is to ensure that node-red-contrib-opi-gpio can gain access to port bits!!
 			getent group gpio || sudo groupadd gpio 2>&1 | tee -a $LOGFILE
@@ -872,6 +876,7 @@ if [[ $MYMENU == *"nodered"* ]]; then
             fi
             
             cd ~/.node-red/
+	    printstatus "Starting Node-Red ..."
             sudo service nodered start 2>&1 | tee -a $LOGFILE
 			while [ ! -f settings.js ] ; do sudo sleep 1 ; done
 			sudo service nodered stop  2>&1 | tee -a $LOGFILE
