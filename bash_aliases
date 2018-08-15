@@ -1,7 +1,7 @@
 # command default options and variations
 
 #
-# Taken from Ubuntu Bash configu .bashrc:
+# Taken from Ubuntu Bash config .bashrc:
 #
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
@@ -34,6 +34,7 @@ alias l='ls -CF'
 # alias l='ls'
 # alias la='ls -la'    # list all
 alias ll='ls -lh'   # list all
+alias dir='lla'     # List all in columns
 alias lh='ll -h'    # list all
 alias lx='ls -X'    # sort by extension
 alias lt='ls -tr'   # sort by mod time, reverse order
@@ -51,8 +52,6 @@ alias br='. ~/.bash_profile'
 alias getdns='scutil --dns'
 alias showdns='getdns'
 # alias ping='ping -c 4'
-alias dir='lla'
-
 
 #
 # Synching data
