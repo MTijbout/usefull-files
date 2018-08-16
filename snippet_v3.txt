@@ -793,8 +793,8 @@ fi
 
 if [[ $MYMENU == *"nodejs"* ]]; then
     printstatus "Installing NodeJS"
-	# Updated 20180814 MTijbout
-	LATESTNODE="v10.8.0" # @MT: Updated to the latest version available.
+	# Updated 20180816 MTijbout
+	LATESTNODE="v10.9.0" # @MT: Updated to the latest version available.
     if [[ $(uname -m) == *"armv6"* ]]; then
         printstatus "Installing ARM6 version"
         wget --no-check-certificate https://nodejs.org/dist/$LATESTNODE/node-$LATESTNODE-linux-armv6l.tar.xz -a $LOGFILE
@@ -803,6 +803,7 @@ if [[ $MYMENU == *"nodejs"* ]]; then
         cd node-$LATESTNODE-linux-armv6l
         sudo cp -R * /usr/local/
         rm -f node-$LATESTNODE-linux-armv6l.tar.xz
+	sudo apt-get $AQUIET -y install npm 2>&1 | tee -a $LOGFILE
     else
         if [[ $CHECK64 == *"aarch64"* ]]; then
             printstatus "Installing ARM64 version"
@@ -812,10 +813,11 @@ if [[ $MYMENU == *"nodejs"* ]]; then
             cd node-$LATESTNODE-linux-arm64
             sudo cp -R * /usr/local/
             rm -f node-$LATESTNODE-linux-arm64.tar.xz
+	    sudo apt-get $AQUIET -y install npm 2>&1 | tee -a $LOGFILE
         else
             curl -sL https://deb.nodesource.com/setup_6.x > nodesetup.sh
             sudo bash nodesetup.sh 2>&1 | tee -a $LOGFILE
-            sudo apt-get $AQUIET -y install nodejs 2>&1 | tee -a $LOGFILE
+            sudo apt-get $AQUIET -y install nodejs npm 2>&1 | tee -a $LOGFILE
             [ $? -eq 0 ] && nodejs=1
         fi
     fi
