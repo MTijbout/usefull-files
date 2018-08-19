@@ -1,9 +1,10 @@
 # command default options and variations
 
 ##
-## Version 1.0
+## Version 1.1
 ##
 
+# 1.1 - Added alias for removing SSH Keys and TextWrangler editor from shell.
 # 1.0 - Optimized for use on MacOS
 
 #
@@ -59,6 +60,8 @@ alias br='. ~/.bash_profile'
 alias getdns='scutil --dns'
 alias showdns='getdns'
 # alias ping='ping -c 4'
+alias tw='open -a /Applications/TextWrangler.app'
+alias delkey='ssh-keygen -R $1'
 
 #
 # Synching data
