@@ -57,8 +57,10 @@ fi
 
 read -t5 -n1 -r -p 'Press any key in the next five seconds to reboot...' key
 if [ "$?" -eq "0" ]; then
+	# code if key is pressed
     echo 'Rebooting the server now ...'
     shutdown -r now
 else
+	#code if no key is pressed
     echo 'No key was pressed. Aborting reboot.'
 fi
