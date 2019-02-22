@@ -22,7 +22,7 @@ if [ $UID != "0" ]; then
 fi
 
 ## Format the date and time strings 
-current_time=$(date "+%Y%m%d-%H%M%%S")
+current_time=$(date "+%Y%m%d-%H%M%S")
 echo "$(date +"%Y-%m-%d %H:%M:%S,%2N") : Start of the hostRename.sh script ..." >> action.log
 
 ## The current and to be old name:
